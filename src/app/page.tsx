@@ -214,6 +214,7 @@ function HomeClient() {
               <ContinueWatching />
 
               {/* 热门电影 */}
+              {/*
               <section className='mb-8'>
                 <div className='mb-4 flex items-center justify-between'>
                   <h2 className='text-xl font-bold text-gray-800 dark:text-gray-200'>
@@ -260,8 +261,10 @@ function HomeClient() {
                       ))}
                 </ScrollableRow>
               </section>
+              */}
 
               {/* 热门剧集 */}
+              {/*
               <section className='mb-8'>
                 <div className='mb-4 flex items-center justify-between'>
                   <h2 className='text-xl font-bold text-gray-800 dark:text-gray-200'>
@@ -307,8 +310,10 @@ function HomeClient() {
                       ))}
                 </ScrollableRow>
               </section>
+              */}
 
               {/* 热门综艺 */}
+              {/* 
               <section className='mb-8'>
                 <div className='mb-4 flex items-center justify-between'>
                   <h2 className='text-xl font-bold text-gray-800 dark:text-gray-200'>
@@ -354,6 +359,7 @@ function HomeClient() {
                       ))}
                 </ScrollableRow>
               </section>
+              */}
             </>
           )}
         </div>
