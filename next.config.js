@@ -1,6 +1,11 @@
 /** @type {import('next').NextConfig} */
 /* eslint-disable @typescript-eslint/no-var-requires */
 const nextConfig = {
+  // 手动创造 env 区域，强行将全球最大的免费反盗链图片中转站写入网页基因
+  env: {
+    NEXT_PUBLIC_DOUBAN_IMAGE_PROXY_TYPE: "custom",
+    NEXT_PUBLIC_DOUBAN_IMAGE_PROXY: "https://weserv.nl",
+  },  
   output: 'standalone',
   eslint: {
     dirs: ['src'],
