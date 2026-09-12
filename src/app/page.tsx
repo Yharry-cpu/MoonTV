@@ -137,7 +137,7 @@ function HomeClient() {
     addSearchHistory(trimmed);
   };
 
-  // 完美平铺的搜索结果聚合分类器
+  // 严格修正后的聚合分类器，修复二元组的下标定位错误
   const aggregatedResults = useMemo(() => {
     const map = new Map<string, SearchResult[]>();
     searchResults.forEach((item) => {
@@ -149,15 +149,15 @@ function HomeClient() {
       map.set(key, arr);
     });
     return Array.from(map.entries()).sort((a, b) => {
-      const aExactMatch = a.title.replaceAll(' ', '').includes(searchQuery.trim().replaceAll(' ', ''));
-      const bExactMatch = b.title.replaceAll(' ', '').includes(searchQuery.trim().replaceAll(' ', ''));
+      const aExactMatch = a[1][0].title.replaceAll(' ', '').includes(searchQuery.trim().replaceAll(' ', ''));
+      const bExactMatch = b[1][0].title.replaceAll(' ', '').includes(searchQuery.trim().replaceAll(' ', ''));
       if (aExactMatch && !bExactMatch) return -1;
       if (!aExactMatch && bExactMatch) return 1;
-      if (a.year === b.year) {
-        return a.localeCompare(b);
+      if (a[1][0].year === b[1][0].year) {
+        return a[0].localeCompare(b[0]);
       } else {
-        const aYear = a.year;
-        const bYear = b.year;
+        const aYear = a[1][0].year;
+        const bYear = b[1][0].year;
         if (aYear === 'unknown' && bYear === 'unknown') return 0;
         if (aYear === 'unknown') return 1;
         if (bYear === 'unknown') return -1;
@@ -311,7 +311,7 @@ function HomeClient() {
                               <VideoCard
                                 from='search'
                                 items={group}
-                                query={searchQuery.trim() !== group.title ? searchQuery.trim() : ''}
+                                query={searchQuery.trim() !== group[0].title ? searchQuery.trim() : ''}
                               />
                             </div>
                           ))
